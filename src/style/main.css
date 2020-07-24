@@ -1,0 +1,59 @@
+.container {
+  max-width: 1024px;
+  padding: 0 1.5rem;
+  margin: auto;
+  overflow: hidden; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: 'Oswald', sans-serif; }
+
+ul {
+  list-style: none; }
+
+img {
+  width: 100%; }
+
+#header {
+  height: 110px;
+  width: 100%;
+  border-bottom: 3px #a0138e solid;
+  overflow: hidden; }
+  #header #main-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    #header #main-nav .nav-name {
+      font-size: 2.6rem;
+      width: 100%;
+      text-align: center; }
+    #header #main-nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      justify-content: center; }
+      #header #main-nav ul li {
+        margin: 0.5rem 0.3rem 0 0;
+        padding: 0.3rem 0.7rem 0;
+        font-size: 0.8rem;
+        border-top: 1px #a0138e solid; }
+      #header #main-nav ul li:hover {
+        border-top: 3px #a0138e solid; }
+      #header #main-nav ul .current {
+        border-top: 3px #a0138e solid; }
+    #header #main-nav a {
+      text-decoration: none; }
+
+#home {
+  background: url("../images/muhammetgok_home.jpg") no-repeat center right/cover;
+  height: calc(100vh - 113px); }
+  #home .quote {
+    position: absolute;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    width: 470px;
+    top: 31%;
+    font-size: 2rem; }
