@@ -4,9 +4,33 @@
   margin: auto;
   overflow: hidden; }
 
+.my-1 {
+  margin: 30px 0; }
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-family: 'Oswald', sans-serif;
+  padding-left: 10px; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: 'Oswald', sans-serif;
+  padding-left: 10px; }
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  font-family: 'Oswald', sans-serif;
+  padding-left: 10px; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-family: 'Oswald', sans-serif;
+  padding-left: 10px; }
+
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  box-sizing: border-box; }
 
 body {
   font-family: 'Oswald', sans-serif; }
@@ -61,7 +85,9 @@ img {
 
 #galleries {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px); }
+  height: calc(100vh - 113px);
+  background-attachment: fixed;
+  min-height: 500px; }
   #galleries .container {
     display: flex;
     font-size: 4rem;
@@ -85,29 +111,99 @@ img {
 
 #about {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px); }
+  height: calc(100vh - 113px);
+  background-attachment: fixed;
+  min-height: 630px; }
   #about .about {
     display: flex;
     height: 600px;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 30px; }
+    background: rgba(255, 255, 255, 0.85);
+    padding-right: 30px;
+    margin-bottom: 30px; }
     #about .about .about-image {
       background: url("../images/about.jpg") no-repeat center right/cover;
-      height: 100%;
-      width: 50%; }
-
-#blog {
-  background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px); }
+      border: 8px solid #efefef;
+      margin: 30px;
+      flex: 1 1 0;
+      width: 0; }
+    #about .about .about-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1 1 0;
+      width: 0; }
+      #about .about .about-text .about-title {
+        display: block;
+        font-size: 2rem;
+        border-bottom: 2px solid black; }
+      #about .about .about-text .about-content {
+        font-weight: 400; }
+      #about .about .about-text .mg-text {
+        margin-right: 30px;
+        font-size: 5rem;
+        text-align: right; }
 
 #contact {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px); }
+  height: calc(100vh - 113px);
+  background-attachment: fixed;
+  min-height: 560px; }
+  #contact .contact {
+    height: 500px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    margin-bottom: 30px; }
+    #contact .contact .contact-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px; }
+    #contact .contact .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 1rem; }
+      #contact .contact .contact-content .contact-info {
+        line-height: 3rem;
+        font-size: 1.5rem; }
+        #contact .contact .contact-content .contact-info .icons {
+          margin-top: 15px;
+          margin-right: 10px; }
+      #contact .contact .contact-content .contact-form .text-fields {
+        display: grid;
+        grid-gap: 0.5rem;
+        margin-bottom: 1.2rem; }
+        #contact .contact .contact-content .contact-form .text-fields .text-input {
+          height: 2.5rem;
+          border: 1px solid;
+          border-radius: 5px; }
+        #contact .contact .contact-content .contact-form .text-fields .message-input {
+          height: 6rem;
+          border: 1px solid;
+          border-radius: 5px; }
+      #contact .contact .contact-content .contact-form .btn {
+        height: 3rem;
+        width: 100%;
+        text-align: center;
+        background: #a0138e;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1.5rem; }
+
+#blog {
+  background: url("../images/background-image.jpg") no-repeat center right/cover;
+  height: calc(100vh - 113px);
+  background-attachment: fixed;
+  min-height: 500px; }
 
 #showreel {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px); }
+  height: calc(100vh - 113px);
+  background-attachment: fixed;
+  min-height: 500px; }
 
 #gallery {
   background: url("../images/gallery-background.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px); }
+  height: calc(100vh - 113px);
+  background-attachment: fixed;
+  min-height: 500px; }

@@ -9,22 +9,22 @@ function About() {
       <div className='container'>
         <div className='about'>
           <div className='about-image' />
-          <div>
+          <div className='about-text'>
             <div>
-              <p>ABOUT</p>
-              <br />
-              <p>
+              <div className='my-1 about-title'>ABOUT</div>
+              <p className="about-content">
                 Muhammet Gok is a Turkish director. He was born in
-                Kahramanmaras, Turkey, and he has been living in Germany. He is
-                married, and he has a daughter called Sara. Muhammet speaks
-                Turkish, Russian, and English.
+                Kahramanmaras, Turkey. He has been living in Germany. He is
+                married. He has a daughter named Sara. Muhammet speaks Turkish,
+                Russian, and English.
                 <br />
-                Muhammet Gok directed many tv series and commercial in Turkey,
+                <br />
+                Muhammet Gok directed many tv series and commercials in Turkey,
                 Germany, Tunisia, and Algeria. He started to prepare a new tv
                 series in Tunisia.
               </p>
             </div>
-            <p>MG</p>
+            <p className='my-1 mg-text'>MG</p>
           </div>
         </div>
       </div>
