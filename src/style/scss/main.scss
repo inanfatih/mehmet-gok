@@ -46,6 +46,7 @@ img {
         padding: 0.3rem 0.7rem 0;
         font-size: 0.8rem;
         border-top: 1px $border-color solid;
+        text-transform: uppercase;
         // border-top: 3px solid transparent;
       }
       li:hover {
@@ -73,4 +74,70 @@ img {
     top: 31%;
     font-size: 2rem;
   }
+}
+
+#galleries {
+  background: $background-image no-repeat center right/cover;
+  height: calc(100vh - 113px);
+  .container {
+    display: flex;
+    font-size: 4rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    .galleries-mylife {
+      width: $website-width/2;
+      background: white;
+      line-height: 480px;
+      height: 500px;
+    }
+    .galleries-media {
+      height: 500px;
+      line-height: 480px;
+      width: $website-width/2;
+      background: black;
+      color: white;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}
+
+#about {
+  background: $background-image no-repeat center right/cover;
+  height: calc(100vh - 113px);
+  .about {
+    display: flex;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    .about-image {
+      background: $about-image no-repeat center right/cover;
+      height: 100%;
+      width: 50%;
+    }
+  }
+}
+
+#blog {
+  background: $background-image no-repeat center right/cover;
+  height: calc(100vh - 113px);
+}
+
+#contact {
+  background: $background-image no-repeat center right/cover;
+  height: calc(100vh - 113px);
+}
+
+#showreel {
+  background: $background-image no-repeat center right/cover;
+  height: calc(100vh - 113px);
+}
+
+#gallery {
+  background: $gallery-background no-repeat center right/cover;
+  height: calc(100vh - 113px);
 }

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import '../style/main.css';
 import '../App.css';
 
 function Home() {
+  useEffect(() => {
+    document.title = 'MUHAMMET GOK';
+  }, []);
   return (
     <div id='home'>
       <div className='container'>

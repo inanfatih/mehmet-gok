@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function Blog() {
-  return <div>Blog</div>;
+  useEffect(() => {
+    document.title = 'MUHAMMET GOK | Blog';
+  }, []);
+  return (
+    <div id='blog'>
+      <div className='container'>
+        <div className='blog'></div>
+      </div>
+    </div>
+  );
 }
 
 export default Blog;

@@ -4,6 +4,7 @@ import './style/main.css';
 import './App.css';
 import Home from './pages/Home';
 import Showreel from './pages/Showreel';
+import Galleries from './pages/Galleries';
 import Gallery from './pages/Gallery';
 import About from './pages/About';
 import Blog from './pages/Blog';
@@ -23,7 +24,9 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path='/showreel' component={Showreel} />
-        <Route exact path='/gallery' component={Gallery} />
+        <Route exact path='/galleries' component={Galleries} />
+        <Route exact path='/mylife' component={Gallery} />
+        <Route exact path='/media' component={Gallery} />
         <Route exact path='/about' component={About} />
         <Route exact path='/blog' component={Blog} />
         <Route exact path='/contact' component={Contact} />

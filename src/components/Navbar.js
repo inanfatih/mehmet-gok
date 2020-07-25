@@ -12,10 +12,7 @@ function Navbar() {
               <Link to='/'>Home</Link>
             </li>
             <li>
-              <Link to='/showreel'>Showreel</Link>
-            </li>
-            <li>
-              <Link to='/gallery'>Galleries</Link>
+              <Link to='/galleries'>Galleries</Link>
             </li>
             <li>
               <Link to='/about'>About</Link>
@@ -25,6 +22,9 @@ function Navbar() {
             </li>
             <li>
               <Link to='/blog'>Blog</Link>
+            </li>
+            <li>
+              <Link to='/showreel'>Showreel</Link>
             </li>
           </ul>
         </nav>
