@@ -58,6 +58,9 @@ a:active {
   color: inherit; }
 
 #header {
+  position: fixed;
+  top: 0;
+  background-color: white;
   height: 110px;
   width: 100%;
   border-bottom: 3px #a0138e solid;
@@ -90,7 +93,8 @@ a:active {
 
 #home {
   background: url("../images/muhammetgok_home.jpg") no-repeat center right/cover;
-  min-height: calc(100vh - 113px); }
+  min-height: calc(100vh - 113px);
+  margin-top: 110px; }
   #home .quote {
     position: absolute;
     padding: 20px;
@@ -102,7 +106,8 @@ a:active {
 #galleries {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin-top: 110px; }
   #galleries .container {
     display: flex;
     font-size: 4rem;
@@ -127,7 +132,8 @@ a:active {
 #about {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin-top: 110px; }
   #about .about {
     display: flex;
     height: 600px;
@@ -160,7 +166,8 @@ a:active {
 #contact {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin-top: 110px; }
   #contact .contact {
     height: 500px;
     background: rgba(255, 255, 255, 0.85);
@@ -206,12 +213,13 @@ a:active {
 #blog {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin-top: 110px; }
   #blog .blog {
     background: rgba(255, 255, 255, 0.85);
     padding: 30px;
     margin-bottom: 30px; }
-    #blog .blog .blog-title {
+    #blog .blog .blog-page-title {
       display: block;
       font-size: 2rem;
       border-bottom: 2px solid black;
@@ -220,11 +228,28 @@ a:active {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 1rem; }
+      #blog .blog .blog-content .blog-column {
+        display: flex;
+        flex-direction: column;
+        width: 100%; }
+        #blog .blog .blog-content .blog-column .blog-column-item {
+          background: white;
+          margin-bottom: 30px; }
+          #blog .blog .blog-content .blog-column .blog-column-item .blog-image {
+            background: url("../images/background-image.jpg") no-repeat center right/cover;
+            width: 100%;
+            height: 250px; }
+          #blog .blog .blog-content .blog-column .blog-column-item .blog-title {
+            font-size: 2rem;
+            margin: 15px 30px; }
+          #blog .blog .blog-content .blog-column .blog-column-item .blog-text {
+            margin: 15px 30px; }
 
 #showreel {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin-top: 110px; }
   #showreel .showreel {
     background: rgba(255, 255, 255, 0.85);
     padding: 30px;
@@ -243,12 +268,13 @@ a:active {
   background: url("../images/gallery-background.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
-  min-height: 500px; }
+  margin-top: 110px; }
 
 #login {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin-top: 110px; }
   #login .login {
     height: 500px;
     background: rgba(255, 255, 255, 0.85);
@@ -271,7 +297,8 @@ a:active {
 #admin {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  margin-top: 110px; }
   #admin .admin {
     height: 700px;
     background: rgba(255, 255, 255, 0.85);

@@ -46,6 +46,9 @@ a:active {
 }
 
 #header {
+  position: fixed;
+  top: 0;
+  background-color: white;
   height: 110px;
   width: 100%;
   border-bottom: 3px $border-color solid;
@@ -92,6 +95,7 @@ a:active {
 #home {
   background: $showcase-image no-repeat center right/cover;
   min-height: calc(100vh - 113px);
+  margin-top: 110px;
 
   .quote {
     position: absolute;
@@ -107,6 +111,8 @@ a:active {
   background: $background-image no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
+  margin-top: 110px;
+
   .container {
     display: flex;
     font-size: 4rem;
@@ -138,6 +144,8 @@ a:active {
   background: $background-image no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
+  margin-top: 110px;
+
   .about {
     display: flex;
     height: 600px;
@@ -178,6 +186,8 @@ a:active {
   background: $background-image no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
+  margin-top: 110px;
+
   .contact {
     height: 500px;
     background: rgba(255, 255, 255, 0.85);
@@ -239,13 +249,14 @@ a:active {
   background: $background-image no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
+  margin-top: 110px;
 
   .blog {
     background: rgba(255, 255, 255, 0.85);
     padding: 30px;
     margin-bottom: 30px;
 
-    .blog-title {
+    .blog-page-title {
       display: block;
       font-size: 2rem;
       border-bottom: 2px solid black;
@@ -256,6 +267,30 @@ a:active {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 1rem;
+
+      .blog-column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .blog-column-item {
+          background: white;
+          margin-bottom: 30px;
+
+          .blog-image {
+            background: $background-image no-repeat center right/cover;
+            width: 100%;
+            height: 250px;
+          }
+          .blog-title {
+            font-size: 2rem;
+            margin: 15px 30px;
+          }
+          .blog-text {
+            margin: 15px 30px;
+          }
+        }
+      }
     }
   }
 }
@@ -264,6 +299,7 @@ a:active {
   background: $background-image no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
+  margin-top: 110px;
 
   .showreel {
     background: rgba(255, 255, 255, 0.85);
@@ -289,13 +325,15 @@ a:active {
   background: $gallery-background no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
-  min-height: 500px;
+  margin-top: 110px;
 }
 
 #login {
   background: $background-image no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
+  margin-top: 110px;
+
   .login {
     height: 500px;
     background: rgba(255, 255, 255, 0.85);
@@ -326,6 +364,8 @@ a:active {
   background: $background-image no-repeat center right/cover;
   min-height: calc(100vh - 113px);
   background-attachment: fixed;
+  margin-top: 110px;
+
   .admin {
     height: 700px;
     background: rgba(255, 255, 255, 0.85);
