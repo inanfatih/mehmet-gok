@@ -1,5 +1,4 @@
 const { admin, db } = require('../util/admin');
-const config = require('../util/config'); //fonksiyon olmadiginda config ve benzeri seyler {config}  seklinde degil de config diye parantezsiz olarak yaziliyor
 
 exports.getBlogs = (req, res) => {
   db.collection('blog')
@@ -91,7 +90,7 @@ exports.deleteBlog = (req, res) => {
     .get()
     .then((doc) => {
       if (!doc.exists) {
-        return res.status(200).json({ message: 'Blog not found' });
+        return res.status(404).json({ message: 'Blog not found' });
       }
       return document.delete();
     })

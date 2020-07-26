@@ -1,4 +1,3 @@
-const { admin, db } = require('../util/admin');
 const config = require('../util/config');
 const firebase = require('firebase');
 const { validateLoginData } = require('../util/validators');

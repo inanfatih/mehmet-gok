@@ -7,6 +7,12 @@ const cors = require('cors');
 app.use(cors());
 
 const { getBlogs, getBlog, postBlog, deleteBlog } = require('./handlers/blog');
+const {
+  getImages,
+  postImage,
+  deleteImage,
+  updateImageUrls,
+} = require('./handlers/gallery');
 
 const {
   contactUs,
@@ -15,11 +21,29 @@ const {
 } = require('./handlers/contactUs');
 
 const { login } = require('./handlers/users');
+const {
+  getShowreels,
+  postShowreel,
+  deleteShowreel,
+} = require('./handlers/showreel.js');
 
-app.get('/blog/:contentId', getBlog);
+app.get('/blog/:blogId', getBlog);
 app.get('/blog', getBlogs);
 app.post('/blog', FBAuth, postBlog);
-app.delete('/blog/:contentId', FBAuth, deleteBlog);
+app.delete('/blog/:blogId', FBAuth, deleteBlog);
+
+app.get('/showreel', getShowreels);
+app.post('/showreel', FBAuth, postShowreel);
+app.delete('/showreel/:showreelId', FBAuth, deleteShowreel);
+
+app.get('/image', getImages);
+app.post('/image', FBAuth, postImage);
+app.delete('/image/:imageId', FBAuth, deleteImage);
+app.post(
+  '/image/:imageId/:imageFileName/:imageExtension',
+  FBAuth,
+  updateImageUrls,
+);
 
 app.post('/contact', contactUs);
 app.get('/contact', FBAuth, getContactUsMessages);
