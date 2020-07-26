@@ -41,6 +41,10 @@ ul {
 img {
   width: 100%; }
 
+a:active {
+  text-decoration: none;
+  color: inherit; }
+
 #header {
   height: 110px;
   width: 100%;
