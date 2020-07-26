@@ -258,3 +258,56 @@ a:active {
   background-attachment: fixed;
   min-height: 500px;
 }
+
+#login {
+  background: $background-image no-repeat center right/cover;
+  height: calc(100vh - 113px);
+  background-attachment: fixed;
+  min-height: 560px;
+  .login {
+    height: 500px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px 300px;
+    margin-bottom: 30px;
+    .login-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px;
+    }
+
+    .text-fields {
+      display: grid;
+      grid-gap: 0.5rem;
+      margin-bottom: 1.2rem;
+
+      .text-input {
+        height: 2.5rem;
+        border: 1px solid;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+#admin {
+  background: $background-image no-repeat center right/cover;
+  height: calc(100vh - 113px);
+  background-attachment: fixed;
+  min-height: 760px;
+  .admin {
+    height: 700px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px 300px;
+    margin-bottom: 30px;
+    .admin-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px;
+    }
+    .btn-error {
+      background: #d1244f;
+    }
+  }
+}
