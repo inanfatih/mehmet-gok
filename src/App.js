@@ -12,6 +12,7 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
+import axios from 'axios';
 
 import {
   Switch,
@@ -19,6 +20,9 @@ import {
   Redirect,
   BrowserRouter as Router,
 } from 'react-router-dom';
+
+axios.defaults.baseURL =
+  'https://us-central1-muhammet-gok.cloudfunctions.net/api';
 
 function App() {
   return (

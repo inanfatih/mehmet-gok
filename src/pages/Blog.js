@@ -7,7 +7,10 @@ function Blog() {
   return (
     <div id='blog'>
       <div className='container'>
-        <div className='blog'></div>
+        <div className='blog'>
+          <p className='blog-title'>BLOG</p>
+          <div className='blog-content'></div>
+        </div>
       </div>
     </div>
   );

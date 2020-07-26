@@ -90,7 +90,7 @@ a:active {
 
 #home {
   background: url("../images/muhammetgok_home.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px); }
+  min-height: calc(100vh - 113px); }
   #home .quote {
     position: absolute;
     padding: 20px;
@@ -101,9 +101,8 @@ a:active {
 
 #galleries {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px);
-  background-attachment: fixed;
-  min-height: 500px; }
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed; }
   #galleries .container {
     display: flex;
     font-size: 4rem;
@@ -127,9 +126,8 @@ a:active {
 
 #about {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px);
-  background-attachment: fixed;
-  min-height: 630px; }
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed; }
   #about .about {
     display: flex;
     height: 600px;
@@ -161,9 +159,8 @@ a:active {
 
 #contact {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px);
-  background-attachment: fixed;
-  min-height: 560px; }
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed; }
   #contact .contact {
     height: 500px;
     background: rgba(255, 255, 255, 0.85);
@@ -208,27 +205,50 @@ a:active {
 
 #blog {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px);
-  background-attachment: fixed;
-  min-height: 500px; }
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed; }
+  #blog .blog {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    margin-bottom: 30px; }
+    #blog .blog .blog-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px; }
+    #blog .blog .blog-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem; }
 
 #showreel {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px);
-  background-attachment: fixed;
-  min-height: 500px; }
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed; }
+  #showreel .showreel {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    margin-bottom: 30px; }
+    #showreel .showreel .showreel-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem; }
+    #showreel .showreel .showreel-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px; }
 
 #gallery {
   background: url("../images/gallery-background.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px);
+  min-height: calc(100vh - 113px);
   background-attachment: fixed;
   min-height: 500px; }
 
 #login {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px);
-  background-attachment: fixed;
-  min-height: 560px; }
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed; }
   #login .login {
     height: 500px;
     background: rgba(255, 255, 255, 0.85);
@@ -250,9 +270,8 @@ a:active {
 
 #admin {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
-  height: calc(100vh - 113px);
-  background-attachment: fixed;
-  min-height: 760px; }
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed; }
   #admin .admin {
     height: 700px;
     background: rgba(255, 255, 255, 0.85);
