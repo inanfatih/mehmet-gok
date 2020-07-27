@@ -264,12 +264,6 @@ a:active {
       border-bottom: 2px solid black;
       margin-bottom: 20px; }
 
-#gallery {
-  background: url("../images/gallery-background.jpg") no-repeat center right/cover;
-  min-height: calc(100vh - 113px);
-  background-attachment: fixed;
-  margin-top: 110px; }
-
 #login {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
   min-height: calc(100vh - 113px);
@@ -311,3 +305,58 @@ a:active {
       margin-bottom: 20px; }
     #admin .admin .btn-error {
       background: #d1244f; }
+
+#gallery {
+  background: url("../images/background-image.jpg") no-repeat center right/cover;
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed;
+  margin-top: 110px; }
+  #gallery .gallery {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    margin-bottom: 30px; }
+    #gallery .gallery .gallery-page-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px; }
+
+#create-showreel {
+  background: url("../images/background-image.jpg") no-repeat center right/cover;
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed;
+  margin-top: 110px; }
+  #create-showreel .create-showreel {
+    height: 500px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    margin-bottom: 30px; }
+    #create-showreel .create-showreel .create-showreel-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px; }
+    #create-showreel .create-showreel .create-showreel-info {
+      line-height: 3rem;
+      font-size: 1.5rem; }
+    #create-showreel .create-showreel .create-showreel-form .text-fields {
+      display: grid;
+      grid-gap: 0.5rem;
+      margin-bottom: 1.2rem; }
+      #create-showreel .create-showreel .create-showreel-form .text-fields .text-input {
+        height: 2.5rem;
+        border: 1px solid;
+        border-radius: 5px; }
+      #create-showreel .create-showreel .create-showreel-form .text-fields .message-input {
+        height: 6rem;
+        border: 1px solid;
+        border-radius: 5px; }
+    #create-showreel .create-showreel .create-showreel-form .btn {
+      height: 3rem;
+      width: 100%;
+      text-align: center;
+      background: #a0138e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.5rem; }
