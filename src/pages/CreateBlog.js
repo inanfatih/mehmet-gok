@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import IsAuthenticated from '../util/IsAuthenticated';
 import firebase, { firebaseConfig } from '../firebase/firebase';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Button from '@material-ui/core/Button';
 
 function CreateBlog(props) {
   if (!IsAuthenticated()) {
@@ -16,14 +23,38 @@ function CreateBlog(props) {
     blogText: '',
     image: '',
   });
-  const [loading, setLoading] = useState(false);
   const [blogId, setBlogId] = useState('');
   const [blogImage, setBlogImage] = useState('');
+  const [validators, setValidators] = useState({
+    errors: {},
+    loading: false,
+    isSuccessfull: false,
+    isFailed: false,
+  });
+  const { errors, loading, isSuccessfull, isFailed } = validators;
 
   useEffect(() => {
     document.title = 'MUHAMMET GOK | Create Blog';
   }, []);
 
+  const clearForm = () => {
+    setBlog({
+      ...blog,
+      orderNo: 0,
+      title: '',
+      description: '',
+      location: '',
+      blogText: '',
+      image: '',
+    });
+    setValidators({
+      ...validators,
+      errors: {},
+      loading: false,
+      isSuccessfull: false,
+      isFailed: false,
+    });
+  };
   const imageUploader = async (file, blogId) => {
     // let reader = new FileReader();
     // let file = event.target.files[0];
@@ -61,35 +92,43 @@ function CreateBlog(props) {
   const handleSubmit = (event) => {
     console.log('handleSubmit', event);
     event.preventDefault();
-    setLoading(true);
 
+    setValidators({
+      ...validators,
+      loading: true,
+    });
     axios
       .post('/blog', blog)
       .then((res) => {
         console.log('res.data', res.data);
         setBlogId('');
-        setLoading(false);
-        // setBlog({
-        //   ...blog,
-        //   orderNo: 0,
-        //   title: '',
-        //   description: '',
-        //   location: '',
-        //   blogText: '',
-        //   image: '',
-        // });
+
         return res.data.blog.blogId;
       })
-      .then((returnedBlogId) => {
+      .then(async (returnedBlogId) => {
         console.log('returnedBlogId', returnedBlogId);
         try {
-          return imageUploader(blogImage, returnedBlogId);
+          return await imageUploader(blogImage, returnedBlogId);
         } catch (error) {
           console.log('error in image upload', error);
+          setValidators({
+            ...validators,
+            isFailed: true,
+          });
         }
       })
+      .then(() => {
+        setValidators({
+          ...validators,
+          loading: false,
+          isSuccessfull: !isFailed,
+        });
+      })
       .catch((err) => {
-        setLoading(false);
+        setValidators({
+          ...validators,
+          isFailed: true,
+        });
         console.log('error', err);
       });
   };
@@ -101,7 +140,7 @@ function CreateBlog(props) {
       return setBlogImage(image);
     } else {
       window.alert('Please select images only in jpg, jpeg or png extensions');
-      document.getElementById('mainImageInput').value = null;
+      document.getElementById('image').value = null;
     }
   };
 
@@ -128,6 +167,7 @@ function CreateBlog(props) {
                     name='title'
                     className='text-input name-input'
                     value={blog.title}
+                    required
                     onChange={(event) => {
                       setBlog({
                         ...blog,
@@ -138,6 +178,7 @@ function CreateBlog(props) {
                   <label htmlFor='description'>Description</label>
                   <input
                     type='text'
+                    required
                     name='description'
                     className='text-input name-input'
                     value={blog.description}
@@ -152,6 +193,7 @@ function CreateBlog(props) {
                   <input
                     type='text'
                     name='location'
+                    required
                     className='text-input name-input'
                     value={blog.location}
                     onChange={(event) => {
@@ -165,6 +207,7 @@ function CreateBlog(props) {
                   <input
                     type='number'
                     name='orderNo'
+                    required
                     className='text-input name-input'
                     value={blog.orderNo}
                     onChange={(event) => {
@@ -177,6 +220,8 @@ function CreateBlog(props) {
                   <label htmlFor='image'>Blog Image </label>
                   <input
                     name='image'
+                    required
+                    id='image'
                     type='file'
                     accept='image/*'
                     onChange={uploadImage}
@@ -185,6 +230,7 @@ function CreateBlog(props) {
                   <textarea
                     className='text-input message-input'
                     name='message'
+                    required
                     value={blog.blogText}
                     onChange={(event) => {
                       setBlog({
@@ -201,6 +247,51 @@ function CreateBlog(props) {
           </div>
         </div>
       </div>
+      {
+        <Dialog
+          open={loading || isSuccessfull || isFailed}
+          keepMounted
+          onClose={() => {
+            setValidators({
+              ...validators,
+              isSuccessfull: false,
+              isFailed: false,
+              loading: false,
+            });
+          }}
+          aria-labelledby='alert-dialog-slide-title'
+          aria-describedby='alert-dialog-slide-description'>
+          <DialogTitle id='alert-dialog-slide-title'>
+            {!isSuccessfull && !isFailed
+              ? 'Uploading content images - Please wait'
+              : isFailed
+              ? 'Failed'
+              : 'Successful'}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id='alert-dialog-slide-description'>
+              {!isSuccessfull && !isFailed ? (
+                <CircularProgress
+                  color='secondary'
+                  size={50}
+                  style={{ display: 'block', margin: 'auto' }}
+                />
+              ) : isFailed ? (
+                'Failed - Try again'
+              ) : (
+                'Good job! Blog is created.'
+              )}
+            </DialogContentText>
+          </DialogContent>
+          {(isSuccessfull || isFailed) && (
+            <DialogActions>
+              <Button onClick={clearForm} color='primary'>
+                Dismiss
+              </Button>
+            </DialogActions>
+          )}
+        </Dialog>
+      }
     </div>
   );
 }
