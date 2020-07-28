@@ -1,9 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+function BlogPage(props) {
+  const blogId = props.match.params.contentId;
 
-function BlogPage() {
+  const [loading, setLoading] = useState(false);
+  const [blog, setBlog] = useState({});
+
   useEffect(() => {
-    document.title = 'MUHAMMET GOK | Blog';
-  }, []);
+    setLoading(true);
+    axios
+      .get(`/blog/${blogId}`)
+      .then((res) => {
+        document.title = 'MUHAMMET GOK | Blog';
+
+        console.log('result', res);
+        setBlog(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [blogId]);
+
   return (
     <div id='blog'>
       <div className='container'>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import axios from 'axios';
+import loadingSipnner from '../util/loadingSpinner';
 
 function Showreel() {
   const [showreels, setShowreels] = useState([]);
@@ -30,26 +31,23 @@ function Showreel() {
       <div className='container'>
         <div className='showreel'>
           <p className='showreel-title'>SHOWREEL</p>
-          <div className='showreel-content'>
-            {showreels.map((item, index) => (
-              <ReactPlayer
-                url={item.showreelUrl}
-                controls={true}
-                width='100%'
-                height='300px'
-                className='react-player'
-              />
-            ))}
-            {/* {showreels.map((item, index) => (
-            <ReactPlayer
-              url={item.showreelUrl}
-              controls={true}
-              width='100%'
-              height='300px'
-              className='react-player'
-            />
-          ))} */}
-          </div>
+          {loading ? (
+            loadingSipnner
+          ) : (
+            <div>
+              <div className='showreel-content'>
+                {showreels.map((item, index) => (
+                  <ReactPlayer
+                    url={item.showreelUrl}
+                    controls={true}
+                    width='100%'
+                    height='300px'
+                    className='react-player'
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

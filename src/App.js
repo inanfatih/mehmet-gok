@@ -7,8 +7,8 @@ import Showreel from './pages/Showreel';
 import Galleries from './pages/Galleries';
 import Gallery from './pages/Gallery';
 import About from './pages/About';
-import Blog from './pages/Blogs';
 import BlogPage from './pages/BlogPage';
+import Blogs from './pages/Blogs';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
@@ -36,7 +36,7 @@ function App() {
         <Route exact path='/mylife' component={Gallery} />
         <Route exact path='/media' component={Gallery} />
         <Route exact path='/about' component={About} />
-        <Route exact path='/blog' component={Blog} />
+        <Route exact path='/blog' component={Blogs} />
         <Route exact path='/blog/:blogid' component={BlogPage} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/admin' component={Admin} />

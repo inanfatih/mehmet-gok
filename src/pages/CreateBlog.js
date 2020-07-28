@@ -263,7 +263,7 @@ function CreateBlog(props) {
           aria-describedby='alert-dialog-slide-description'>
           <DialogTitle id='alert-dialog-slide-title'>
             {!isSuccessfull && !isFailed
-              ? 'Uploading content images - Please wait'
+              ? 'Creating the blog - Please wait'
               : isFailed
               ? 'Failed'
               : 'Successful'}
