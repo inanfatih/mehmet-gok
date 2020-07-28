@@ -29,7 +29,10 @@ function Admin(props) {
             <button className='btn'>Create Showreel</button>
           </Link>
           <button className='btn'>List and Delete Showreels</button>
-          <button className='btn'>Create a Blog</button>
+          <Link to='/create-blog'>
+            <button className='btn'>Create a Blog</button>
+          </Link>
+
           <button className='btn'>List and Delete a Blog</button>
           <button className='btn'>List and Delete Contact Messages</button>
           <button className='btn btn-error' onClick={logout}>

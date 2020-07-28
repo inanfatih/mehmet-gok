@@ -1,4 +1,5 @@
 const { admin, db } = require('../util/admin');
+const config = require('../util/config'); //fonksiyon olmadiginda config ve benzeri seyler {config}  seklinde degil de config diye parantezsiz olarak yaziliyor
 
 exports.getBlogs = (req, res) => {
   db.collection('blog')
@@ -47,10 +48,6 @@ exports.postBlog = (req, res) => {
   let errors = {};
   if (req.body.title.trim() === '') {
     errors.title = 'title must not be empty';
-  }
-
-  if (req.body.description.trim() === '') {
-    errors.description = 'description must not be empty';
   }
 
   if (req.body.orderNo === null) {
@@ -127,4 +124,20 @@ exports.deleteBlog = (req, res) => {
       console.log(err);
       return res.status(500).json({ error: err.code });
     });
+};
+
+exports.updateBlogsImageUrl = async (req, res) => {
+  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/blogimages%2F${req.params.imageId}.${req.params.imageExtension}?alt=media`;
+
+
+
+  try {
+    await db.doc(`/blog/${req.params.imageId}`).update({ image: imageUrl });
+    return res.json({
+      message: 'Image uploaded successfully',
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: err.code });
+  }
 };

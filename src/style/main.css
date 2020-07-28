@@ -136,7 +136,7 @@ a:active {
   margin-top: 110px; }
   #about .about {
     display: flex;
-    height: 600px;
+    min-height: 600px;
     background: rgba(255, 255, 255, 0.85);
     padding-right: 30px;
     margin-bottom: 30px; }
@@ -169,7 +169,7 @@ a:active {
   background-attachment: fixed;
   margin-top: 110px; }
   #contact .contact {
-    height: 500px;
+    min-height: 500px;
     background: rgba(255, 255, 255, 0.85);
     padding: 30px;
     margin-bottom: 30px; }
@@ -270,7 +270,7 @@ a:active {
   background-attachment: fixed;
   margin-top: 110px; }
   #login .login {
-    height: 500px;
+    min-height: 500px;
     background: rgba(255, 255, 255, 0.85);
     padding: 30px 300px;
     margin-bottom: 30px; }
@@ -294,7 +294,7 @@ a:active {
   background-attachment: fixed;
   margin-top: 110px; }
   #admin .admin {
-    height: 700px;
+    min-height: 700px;
     background: rgba(255, 255, 255, 0.85);
     padding: 30px 300px;
     margin-bottom: 30px; }
@@ -327,7 +327,7 @@ a:active {
   background-attachment: fixed;
   margin-top: 110px; }
   #create-showreel .create-showreel {
-    height: 500px;
+    min-height: 500px;
     background: rgba(255, 255, 255, 0.85);
     padding: 30px;
     margin-bottom: 30px; }
@@ -352,6 +352,46 @@ a:active {
         border: 1px solid;
         border-radius: 5px; }
     #create-showreel .create-showreel .create-showreel-form .btn {
+      height: 3rem;
+      width: 100%;
+      text-align: center;
+      background: #a0138e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.5rem; }
+
+#create-blog {
+  background: url("../images/background-image.jpg") no-repeat center right/cover;
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed;
+  margin-top: 110px; }
+  #create-blog .create-blog {
+    min-height: 500px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    margin-bottom: 30px; }
+    #create-blog .create-blog .create-blog-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px; }
+    #create-blog .create-blog .create-blog-info {
+      line-height: 3rem;
+      font-size: 1.5rem; }
+    #create-blog .create-blog .create-blog-form .text-fields {
+      display: grid;
+      grid-gap: 0.5rem;
+      margin-bottom: 1.2rem; }
+      #create-blog .create-blog .create-blog-form .text-fields .text-input {
+        height: 2.5rem;
+        border: 1px solid;
+        border-radius: 5px; }
+      #create-blog .create-blog .create-blog-form .text-fields .message-input {
+        height: 6rem;
+        border: 1px solid;
+        border-radius: 5px; }
+    #create-blog .create-blog .create-blog-form .btn {
       height: 3rem;
       width: 100%;
       text-align: center;

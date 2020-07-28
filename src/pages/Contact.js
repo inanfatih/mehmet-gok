@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import axios from 'axios';
 
 function Contact() {
   useEffect(() => {
@@ -18,50 +19,50 @@ function Contact() {
                 <a
                   href='https://www.facebook.com/muhammet.gok.100'
                   className='icons'>
-                  <i class='fab fa-facebook-square fa-2x'></i>
+                  <i className='fab fa-facebook-square fa-2x'></i>
                 </a>
                 <a href='https://www.instagram.com/muhametgok/'>
-                  <i class='fab fa-instagram fa-2x'></i>
+                  <i className='fab fa-instagram fa-2x'></i>
                 </a>
               </div>
             </div>
             <div className='contact-form'>
               <div>
                 <form>
-                  <div class='text-fields'>
+                  <div className='text-fields'>
                     <input
                       type='text'
                       name='name'
-                      class='text-input name-input'
+                      className='text-input name-input'
                       placeholder='Name'
                     />
                     <input
                       type='text'
                       name='phone'
-                      class='text-input phone-input'
+                      className='text-input phone-input'
                       placeholder='Phone Number'
                     />
                     <input
                       type='email'
                       name='email'
-                      class='text-input email-input'
+                      className='text-input email-input'
                       placeholder='Email Address'
                     />
                     <input
                       type='text'
                       name='subject'
-                      class='text-input subject-input'
+                      className='text-input subject-input'
                       placeholder='Subject'
                     />
                     <textarea
-                      class='text-input message-input'
+                      className='text-input message-input'
                       name='message'
                       placeholder='Enter Message'></textarea>
-                    {/* <di class='my-2'>
+                    {/* <di className='my-2'>
                     <div data-netlify-recaptcha='true'></div>
                   </di> */}
                   </div>
-                  <button class='btn' type='submit'>
+                  <button className='btn' type='submit'>
                     Submit
                   </button>
                 </form>

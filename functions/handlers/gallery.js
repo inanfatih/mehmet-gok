@@ -93,7 +93,7 @@ exports.deleteImage = (req, res) => {
 };
 
 exports.updateImageUrls = async (req, res) => {
-  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${req.params.imageId}.${req.params.imageExtension}?alt=media`; // burada path'in sonuna alt=media eklemeyince o media'yi browser'da gosterebiliyoruz. Eklemezsek, browser onu indiriyor
+  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/gallery/${req.params.imageId}.${req.params.imageExtension}?alt=media`;
 
   try {
     await db.doc(`/image/${req.params.imageId}`).update({ imageUrl: imageUrl });

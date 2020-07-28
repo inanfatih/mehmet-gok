@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Admin from './pages/Admin';
 import axios from 'axios';
 import CreateShowreel from './pages/CreateShowreel';
+import CreateBlog from './pages/CreateBlog';
 
 import {
   Switch,
@@ -40,6 +41,7 @@ function App() {
         <Route exact path='/admin' component={Admin} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/create-showreel' component={CreateShowreel} />
+        <Route exact path='/create-blog' component={CreateBlog} />
         <Route exact path='/' component={Home} />
         <Redirect to='/' />
       </Switch>

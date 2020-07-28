@@ -46,7 +46,8 @@ function CreateShowreel(props) {
                 Note: Showreels will be ordered on the Showreel page based on
                 the order numbers. Showreels will be sorted by descending order
                 numbers. Showreels with the same order numbers will be sorted by
-                descending creation date.
+                descending creation date. Showreels with higher order number
+                will be displayed first.
               </p>
               <br />
               <form onSubmit={handleSubmit}>
@@ -65,7 +66,7 @@ function CreateShowreel(props) {
                       });
                     }}
                   />
-                  <label>Order No:</label>
+                  <label>Order Number:</label>
                   <input
                     type='number'
                     name='orderNo'
