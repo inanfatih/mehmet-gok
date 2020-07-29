@@ -1,3 +1,4 @@
+@import url(~react-image-gallery/styles/css/image-gallery.css);
 .container {
   max-width: 1024px;
   padding: 0 1.5rem;
@@ -392,6 +393,36 @@ a:active {
         border: 1px solid;
         border-radius: 5px; }
     #create-blog .create-blog .create-blog-form .btn {
+      height: 3rem;
+      width: 100%;
+      text-align: center;
+      background: #a0138e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.5rem 1.5rem; }
+
+#create-gallery {
+  background: url("../images/background-image.jpg") no-repeat center right/cover;
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed;
+  margin-top: 110px; }
+  #create-gallery .create-gallery {
+    min-height: 500px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    margin-bottom: 30px; }
+    #create-gallery .create-gallery .create-gallery-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px; }
+    #create-gallery .create-gallery .create-gallery-form .text-fields {
+      margin: 10px 0; }
+      #create-gallery .create-gallery .create-gallery-form .text-fields .type-label {
+        margin: 5px 20px 5px 5px; }
+    #create-gallery .create-gallery .create-gallery-form .btn {
+      margin-top: 20px;
       height: 3rem;
       width: 100%;
       text-align: center;

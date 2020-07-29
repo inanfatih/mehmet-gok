@@ -21,7 +21,9 @@ function Admin(props) {
       <div className='container'>
         <div className='admin'>
           <p className='admin-title'>Admin</p>
-          <button className='btn'>Upload Image to the Gallery</button>
+          <Link to='/upload-gallery-photo'>
+            <button className='btn'>Upload Image to the Gallery</button>
+          </Link>
           <button className='btn'>
             List and Delete Image from the Gallery
           </button>

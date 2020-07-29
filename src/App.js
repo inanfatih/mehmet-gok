@@ -22,6 +22,7 @@ import {
   Redirect,
   BrowserRouter as Router,
 } from 'react-router-dom';
+import CreateGalleryImage from './pages/CreateGalleryImage';
 
 axios.defaults.baseURL =
   'https://us-central1-muhammet-gok.cloudfunctions.net/api';
@@ -42,6 +43,11 @@ function App() {
         <Route exact path='/admin' component={Admin} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/create-showreel' component={CreateShowreel} />
+        <Route
+          exact
+          path='/upload-gallery-photo'
+          component={CreateGalleryImage}
+        />
         <Route exact path='/create-blog' component={CreateBlog} />
         <Route exact path='/' component={Home} />
         <Redirect to='/' />
