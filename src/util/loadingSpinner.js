@@ -10,7 +10,7 @@ const loadingSpinner = (
     <CircularProgress
       size={100}
       thickness={2}
-      color={'#fff'}
+      color={'inherit'}
       style={{ marginTop: '30vh' }}
     />
   </div>
