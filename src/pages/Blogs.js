@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import loadingSipnner from '../util/loadingSpinner';
+import { Link } from 'react-router-dom';
 
 function Blogs() {
   const [loading, setLoading] = useState(false);
@@ -37,15 +38,17 @@ function Blogs() {
                   {blogs.map((blog, index) => {
                     if (index % 2 === 0) {
                       return (
-                        <div className='blog-column-item' key={index}>
-                          <div
-                            className='blog-image'
-                            style={{
-                              backgroundImage: `url(${blog.image})`,
-                            }}></div>
-                          <p className='blog-title'>{blog.title}</p>
-                          <p className='blog-text'>{blog.description}</p>
-                        </div>
+                        <Link to={'/blog/' + blog.blogId}>
+                          <div className='blog-column-item' key={index}>
+                            <div
+                              className='blog-image'
+                              style={{
+                                backgroundImage: `url(${blog.image})`,
+                              }}></div>
+                            <p className='blog-title'>{blog.title}</p>
+                            <p className='blog-text'>{blog.description}</p>
+                          </div>
+                        </Link>
                       );
                     }
                   })}
@@ -54,15 +57,17 @@ function Blogs() {
                   {blogs.map((blog, index) => {
                     if (index % 2 === 1) {
                       return (
-                        <div className='blog-column-item' key={index}>
-                          <div
-                            className='blog-image'
-                            style={{
-                              backgroundImage: `url(${blog.image})`,
-                            }}></div>
-                          <p className='blog-title'>{blog.title}</p>
-                          <p className='blog-text'>{blog.description}</p>
-                        </div>
+                        <Link to={'/blog/' + blog.blogId}>
+                          <div className='blog-column-item' key={index}>
+                            <div
+                              className='blog-image'
+                              style={{
+                                backgroundImage: `url(${blog.image})`,
+                              }}></div>
+                            <p className='blog-title'>{blog.title}</p>
+                            <p className='blog-text'>{blog.description}</p>
+                          </div>
+                        </Link>
                       );
                     }
                   })}

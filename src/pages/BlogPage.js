@@ -1,103 +1,74 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-function BlogPage(props) {
-  const blogId = props.match.params.contentId;
+import loadingSipnner from '../util/loadingSpinner';
 
+function BlogPage() {
   const [loading, setLoading] = useState(false);
-  const [blog, setBlog] = useState({});
+  const [blog, setBlog] = useState([]);
+
+  const dateFormatter = (date) => {
+    date = new Date(date);
+    return (
+      date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+    );
+  };
 
   useEffect(() => {
+    let blogId = window.location.pathname.split('/blog/')[1];
+    console.log('blogId', blogId);
+
+    document.title = 'MUHAMMET GOK | Blog';
     setLoading(true);
     axios
       .get(`/blog/${blogId}`)
       .then((res) => {
-        document.title = 'MUHAMMET GOK | Blog';
-
-        console.log('result', res);
+        console.log('result', res.data);
         setBlog(res.data);
         setLoading(false);
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       });
-  }, [blogId]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
-    <div id='blog'>
+    <div id='blog-page'>
       <div className='container'>
-        <div className='blog'>
-          <p className='blog-page-title'>BLOG</p>
-          <div className='blog-content'>
-            <div className='blog-column'>
-              <div className='blog-column-item'>
-                <div className='blog-image'></div>
-                <p className='blog-title'>Lorem</p>
-                <p className='blog-text'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quisquam beatae autem fugit, ipsa molestias unde rem! Nobis
-                  exercitationem ipsum tenetur, eum natus reprehenderit veniam
-                  commodi, assumenda animi maiores cumque dolore saepe nisi,
-                  debitis temporibus molestiae. Repellendus cum voluptates nisi
-                  enim nobis dignissimos, adipisci ad recusandae
-                </p>
-              </div>
-              <div className='blog-column-item'>
-                <div className='blog-image'></div>
-                <p className='blog-title'>Lorem</p>
-                <p className='blog-text'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quisquam beatae autem fugit, ipsa molestias unde rem! Nobis
-                  exercitationem ipsum tenetur, eum natus reprehenderit veniam
-                  commodi, assumenda animi maiores cumque dolore saepe nisi,
-                  debitis temporibus molestiae. Repellendus cum voluptates nisi
-                  enim nobis dignissimos, adipisci ad recusandae
-                </p>
-              </div>
-              <div className='blog-column-item'>
-                <div className='blog-image'></div>
-                <p className='blog-title'>Lorem</p>
-                <p className='blog-text'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quisquam beatae autem fugit, ipsa molestias unde rem! Nobis
-                  exercitationem ipsum tenetur, eum natus reprehenderit veniam
-                  commodi, assumenda animi maiores cumque dolore saepe nisi,
-                  debitis temporibus molestiae. Repellendus cum voluptates nisi
-                  enim nobis dignissimos, adipisci ad recusandae
-                </p>
-              </div>
+        <div className='blog-page'>
+          {loading ? (
+            loadingSipnner
+          ) : (
+            <div>
+              <p className='blog-page-title'>{blog.title}</p>
+
+              <p className='blog-page-text'>
+                {dateFormatter(Date.parse(blog.createdAt))}
+              </p>
+              <div
+                className='blog-page-image'
+                style={{
+                  backgroundImage: `url(${blog.image})`,
+                }}></div>
+
+              <p
+                className='blog-page-text'
+                style={{ fontWeight: 300, fontSize: '1.6rem' }}>
+                {blog.description}
+              </p>
+              <p
+                className='blog-page-text'
+                style={{ fontWeight: 300, fontSize: '1.2rem' }}>
+                {blog.blogText}
+              </p>
+              <p
+                className='blog-page-text'
+                style={{ fontWeight: 400, fontSize: '2rem' }}>
+                {blog.location}
+              </p>
             </div>
-            <div className='blog-column'>
-              <div className='blog-column-item'>
-                <div className='blog-image'></div>
-                <p className='blog-title'>Lorem</p>
-                <p className='blog-text'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quisquam beatae autem fugit, ipsa molestias unde rem! Nobis
-                </p>
-              </div>
-              <div className='blog-column-item'>
-                <div className='blog-image'></div>
-                <p className='blog-title'>Lorem</p>
-                <p className='blog-text'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quisquam beatae autem fugit, ipsa molestias unde rem! Nobis
-                  enim nobis dignissimos, adipisci ad recusandae
-                </p>
-              </div>
-              <div className='blog-column-item'>
-                <div className='blog-image'></div>
-                <p className='blog-title'>Lorem</p>
-                <p className='blog-text'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Quisquam beatae autem fugit, ipsa molestias unde rem! Nobis
-                  exercitationem ipsum tenetur, eum natus reprehenderit veniam
-                  commodi, assumenda animi maiores cumque dolore saepe nisi,
-                  debitis temporibus molestiae. Repellendus cum voluptates nisi
-                  enim nobis dignissimos, adipisci ad recusandae
-                </p>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
