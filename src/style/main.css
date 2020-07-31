@@ -431,3 +431,9 @@ a:active {
       border: none;
       border-radius: 5px;
       padding: 0.5rem 1.5rem; }
+
+#table {
+  background: url("../images/background-image.jpg") no-repeat center right/cover;
+  min-height: calc(100vh - 113px);
+  background-attachment: fixed;
+  margin-top: 110px; }

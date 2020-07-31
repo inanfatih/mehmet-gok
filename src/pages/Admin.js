@@ -24,19 +24,26 @@ function Admin(props) {
           <Link to='/upload-gallery-photo'>
             <button className='btn'>Upload Image to the Gallery</button>
           </Link>
-          <button className='btn'>
-            List and Delete Image from the Gallery
-          </button>
+          <Link to='/list-gallery-photos'>
+            <button className='btn'>
+              List and Delete Image from the Gallery
+            </button>
+          </Link>
           <Link to='/create-showreel'>
             <button className='btn'>Create Showreel</button>
           </Link>
-          <button className='btn'>List and Delete Showreels</button>
+          <Link to='/list-showreel'>
+            <button className='btn'>List and Delete Showreels</button>
+          </Link>
           <Link to='/create-blog'>
             <button className='btn'>Create a Blog</button>
           </Link>
-
-          <button className='btn'>List and Delete a Blog</button>
-          <button className='btn'>List and Delete Contact Messages</button>
+          <Link to='/list-blog'>
+            <button className='btn'>List and Delete a Blog</button>
+          </Link>
+          <Link to='/list-messages'>
+            <button className='btn'>List and Delete Contact Messages</button>
+          </Link>
           <button className='btn btn-error' onClick={logout}>
             Logout
           </button>
