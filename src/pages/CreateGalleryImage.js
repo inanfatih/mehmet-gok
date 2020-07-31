@@ -30,7 +30,7 @@ function CreateGalleryImage(props) {
     isSuccessfull: false,
     isFailed: false,
   });
-  const { errors, loading, isSuccessfull, isFailed } = validators;
+  const { loading, isSuccessfull, isFailed } = validators;
 
   useEffect(() => {
     document.title = 'MUHAMMET GOK | Upload Gallery Photo';

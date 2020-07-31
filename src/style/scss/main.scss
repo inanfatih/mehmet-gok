@@ -41,6 +41,7 @@ img {
   width: 100%;
 }
 
+a,
 a:active {
   text-decoration: none;
   color: inherit;
@@ -83,7 +84,7 @@ a:active {
       li:hover {
         border-top: 3px $border-color solid;
       }
-      .current {
+      .active {
         border-top: 3px $border-color solid;
       }
     }
@@ -282,6 +283,7 @@ a:active {
         .blog-column-item {
           background: white;
           margin-bottom: 30px;
+          padding-bottom: 20px;
 
           .blog-image {
             background: $background-image no-repeat center right/cover;
@@ -562,7 +564,7 @@ a:active {
   margin-top: 110px;
 
   .blog-page {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     padding: 30px;
     margin-bottom: 30px;
 

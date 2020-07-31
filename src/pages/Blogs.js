@@ -51,6 +51,7 @@ function Blogs() {
                         </Link>
                       );
                     }
+                    return null;
                   })}
                 </div>
                 <div className='blog-column'>
@@ -70,6 +71,7 @@ function Blogs() {
                         </Link>
                       );
                     }
+                    return null;
                   })}
                 </div>
               </div>

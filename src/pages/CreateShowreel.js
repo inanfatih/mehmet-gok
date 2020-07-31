@@ -2,34 +2,73 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import IsAuthenticated from '../util/IsAuthenticated';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Button from '@material-ui/core/Button';
+
 function CreateShowreel(props) {
   if (!IsAuthenticated()) {
     props.history.push('/login');
   }
-
+  const [validators, setValidators] = useState({
+    errors: {},
+    loading: false,
+    isSuccessfull: false,
+    isFailed: false,
+  });
+  const { loading, isSuccessfull, isFailed } = validators;
   const [showreel, setShowreel] = useState({
     orderNo: 0,
     showreelUrl: '',
   });
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     document.title = 'MUHAMMET GOK | Create Showreel';
   }, []);
 
+  const clearForm = () => {
+    setValidators({
+      ...validators,
+      errors: {},
+      loading: false,
+      isSuccessfull: false,
+      isFailed: false,
+    });
+    setShowreel({
+      orderNo: 0,
+      showreelUrl: '',
+    });
+  };
+
   const handleSubmit = (event) => {
     console.log('handleSubmit', event);
     event.preventDefault();
-    setLoading(true);
+    setValidators({
+      ...validators,
+      loading: true,
+      isSuccessfull: !isFailed,
+    });
 
     axios
       .post('/showreel', showreel)
       .then((res) => {
         console.log('res.data', res.data);
-        setLoading(false);
+        setValidators({
+          ...validators,
+          loading: false,
+          isSuccessfull: !isFailed,
+        });
       })
       .catch((err) => {
-        setLoading(false);
+        setValidators({
+          ...validators,
+          loading: false,
+          isSuccessfull: !isFailed,
+        });
         console.log('error', err);
       });
   };
@@ -55,6 +94,7 @@ function CreateShowreel(props) {
                   <input
                     type='text'
                     name='showreel'
+                    required
                     className='text-input name-input'
                     placeholder='https://...'
                     value={showreel.showreelUrl}
@@ -88,6 +128,52 @@ function CreateShowreel(props) {
           </div>
         </div>
       </div>
+
+      {
+        <Dialog
+          open={loading || isSuccessfull || isFailed}
+          keepMounted
+          onClose={() => {
+            setValidators({
+              ...validators,
+              isSuccessfull: false,
+              isFailed: false,
+              loading: false,
+            });
+          }}
+          aria-labelledby='alert-dialog-slide-title'
+          aria-describedby='alert-dialog-slide-description'>
+          <DialogTitle id='alert-dialog-slide-title'>
+            {!isSuccessfull && !isFailed
+              ? 'Creating Showreel - Please wait'
+              : isFailed
+              ? 'Failed'
+              : 'Successful'}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id='alert-dialog-slide-description'>
+              {!isSuccessfull && !isFailed ? (
+                <CircularProgress
+                  color='secondary'
+                  size={50}
+                  style={{ display: 'block', margin: 'auto' }}
+                />
+              ) : isFailed ? (
+                'Failed - Try again'
+              ) : (
+                'Good job! Showreel is created.'
+              )}
+            </DialogContentText>
+          </DialogContent>
+          {(isSuccessfull || isFailed) && (
+            <DialogActions>
+              <Button onClick={clearForm} color='primary'>
+                Dismiss
+              </Button>
+            </DialogActions>
+          )}
+        </Dialog>
+      }
     </div>
   );
 }

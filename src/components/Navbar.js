@@ -1,36 +1,91 @@
 import React from 'react';
+import { matchPath, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
-  return (
-    <div id='header'>
-      <div className='container'>
-        <nav id='main-nav'>
-          <h1 className='nav-name'>MUHAMMET GOK</h1>
-          <ul>
-            <li className='current'>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/galleries'>Galleries</Link>
-            </li>
-            <li>
-              <Link to='/about'>About</Link>
-            </li>
-            <li>
-              <Link to='/contact'>Contact</Link>
-            </li>
-            <li>
-              <Link to='/blog'>Blog</Link>
-            </li>
-            <li>
-              <Link to='/showreel'>Showreel</Link>
-            </li>
-          </ul>
-        </nav>
+class Navbar extends React.Component {
+  render() {
+    return (
+      <div id='header'>
+        <div className='container'>
+          <nav id='main-nav'>
+            <h1 className='nav-name'>MUHAMMET GOK</h1>
+            <ul>
+              <li
+                className={
+                  matchPath(this.props.location.pathname, {
+                    path: '/',
+                    exact: true,
+                  })
+                    ? 'active'
+                    : ''
+                }>
+                <Link to='/'>Home</Link>
+              </li>
+              <li
+                className={
+                  matchPath(this.props.location.pathname, {
+                    path: '/galleries',
+                  })
+                    ? 'active'
+                    : matchPath(this.props.location.pathname, {
+                        path: '/mylife',
+                      })
+                    ? 'active'
+                    : matchPath(this.props.location.pathname, {
+                        path: '/media',
+                      })
+                    ? 'active'
+                    : ''
+                }>
+                <Link to='/galleries'>Galleries</Link>
+              </li>
+              <li
+                className={
+                  matchPath(this.props.location.pathname, {
+                    path: '/about',
+                  })
+                    ? 'active'
+                    : ''
+                }>
+                <Link to='/about'>About</Link>
+              </li>
+              <li
+                className={
+                  matchPath(this.props.location.pathname, {
+                    path: '/contact',
+                  })
+                    ? 'active'
+                    : ''
+                }>
+                <Link to='/contact'>Contact</Link>
+              </li>
+              <li
+                className={
+                  matchPath(this.props.location.pathname, {
+                    path: '/blog',
+                  })
+                    ? 'active'
+                    : ''
+                }>
+                <Link to='/blog'>Blog</Link>
+              </li>
+              <li
+                className={
+                  matchPath(this.props.location.pathname, {
+                    path: '/showreel',
+                  })
+                    ? 'active'
+                    : ''
+                }>
+                <Link to='/showreel'>Showreel</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
+// export default Navbar;

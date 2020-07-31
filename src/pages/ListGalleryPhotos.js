@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useMemo } from 'react';
+// import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import firebase from '../firebase/firebase';
 import loadingSipnner from '../util/loadingSpinner';
 import MaterialTable from 'material-table';
-import axios from 'axios';
 //Files
 import '../App.css';
 import IsAuthenticated from '../util/IsAuthenticated';
@@ -25,14 +25,14 @@ export default function ListGalleryPhotos(props) {
   const [mergedItems, setMergedItems] = useState([]);
 
   // If you still need to store each itemsType in a separate lists you could do the following
-  const media = useMemo(
-    () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'Media'),
-    [mergedItems],
-  );
-  const myLife = useMemo(
-    () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'My Life'),
-    [mergedItems],
-  );
+  // const media = useMemo(
+  //   () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'Media'),
+  //   [mergedItems],
+  // );
+  // const myLife = useMemo(
+  //   () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'My Life'),
+  //   [mergedItems],
+  // );
 
   const getAllPhotos = async () => {
     const storageRefMedia = firebase.storage().ref('media');

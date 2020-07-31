@@ -23,7 +23,7 @@ function CreateBlog(props) {
     blogText: '',
     image: '',
   });
-  const [blogId, setBlogId] = useState('');
+  // const [blogId, setBlogId] = useState('');
   const [blogImage, setBlogImage] = useState('');
   const [validators, setValidators] = useState({
     errors: {},
@@ -31,7 +31,7 @@ function CreateBlog(props) {
     isSuccessfull: false,
     isFailed: false,
   });
-  const { errors, loading, isSuccessfull, isFailed } = validators;
+  const { loading, isSuccessfull, isFailed } = validators;
 
   useEffect(() => {
     document.title = 'MUHAMMET GOK | Create Blog';
@@ -101,7 +101,7 @@ function CreateBlog(props) {
       .post('/blog', blog)
       .then((res) => {
         console.log('res.data', res.data);
-        setBlogId('');
+        // setBlogId('');
 
         return res.data.blog.blogId;
       })

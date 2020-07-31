@@ -16,6 +16,7 @@
     "react-dom": "^16.13.1",
     "react-image-gallery": "^1.0.8",
     "react-player": "^2.6.0",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
@@ -38,7 +39,8 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   },
   "devDependencies": {
