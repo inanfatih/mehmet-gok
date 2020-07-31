@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import firebase from '../firebase/firebase';
+import React, { useEffect, useState } from 'react';
 import loadingSipnner from '../util/loadingSpinner';
 import MaterialTable from 'material-table';
 import axios from 'axios';
@@ -7,65 +6,37 @@ import axios from 'axios';
 import '../App.css';
 import IsAuthenticated from '../util/IsAuthenticated';
 
-export default function ListShowreel(props) {
+export default function ListGalleryPhotos(props) {
   if (!IsAuthenticated()) {
     props.history.push('/login');
   }
 
   const columns = [
-    { title: 'Image Url', field: 'imageUrl' },
+    { title: 'Showreel Url', field: 'showreelUrl' },
     {
-      title: 'Image Type',
-      field: 'type',
+      title: 'Order No',
+      field: 'orderNo',
     },
   ];
 
   const [loading, setLoading] = useState(true);
+  const [showreels, setShowreels] = useState([]);
 
-  const [mergedItems, setMergedItems] = useState([]);
-
-  // If you still need to store each itemsType in a separate lists you could do the following
-  const media = useMemo(
-    () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'Media'),
-    [mergedItems],
-  );
-  const myLife = useMemo(
-    () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'My Life'),
-    [mergedItems],
-  );
-
-  const getAllPhotos = async () => {
-    const storageRefMedia = firebase.storage().ref('media');
-    const storageRefMyLife = firebase.storage().ref('mylife');
-
-    const itemsMapFactory = (type) => async (imageRef) => {
-      const imageUrl = await imageRef.getDownloadURL();
-      return { imageUrl, type };
-    };
-    const [mediaItems, myLifeItems] = await Promise.all([
-      storageRefMedia.listAll(),
-      storageRefMyLife.listAll(),
-    ]).catch((error) => {
-      console.log('error', error);
-      setLoading(false);
-    });
-
-    await Promise.all([
-      ...mediaItems.items.map(itemsMapFactory('Media')),
-      ...myLifeItems.items.map(itemsMapFactory('My Life')),
-    ])
-      .then((hay) => {
-        setMergedItems(hay);
+  const getAllShowreels = () => {
+    axios
+      .get('/showreel')
+      .then((res) => {
+        setShowreels(res.data);
+        console.log('showreels', res.data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.log('error', error);
-        setLoading(false);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   useEffect(() => {
-    getAllPhotos();
+    getAllShowreels();
     //eslint-disable-next-line
   }, []);
 
@@ -77,31 +48,17 @@ export default function ListShowreel(props) {
         <MaterialTable
           title='Gallery Photos'
           columns={columns}
-          data={mergedItems}
+          data={showreels}
           editable={{
-            // onRowUpdate: (newData, oldData) =>
-            //   new Promise((resolve) => {
-            //     IsAuthenticated();
-            //     setTimeout(() => {
-            //       resolve();
-            //       if (oldData) {
-            //         setState((prevState) => {
-            //           const data = [...prevState.data];
-            //           data[data.indexOf(oldData)] = newData;
-            //           return { ...prevState, data };
-            //         });
-            //       }
-            //     }, 600);
-            //   }),
             onRowDelete: async (oldData) => {
               IsAuthenticated();
-              const contentId = oldData.contentId;
+              let showreelId = oldData.showreelId;
               console.log('oldData', oldData);
-              console.log('contentId', contentId);
+
               await axios
-                .delete(`/content/${contentId}`)
+                .delete(`/showreel/${showreelId}`)
                 .then((res) => {
-                  setMergedItems(res.data);
+                  setShowreels(res.data);
                 })
                 .catch((err) => {
                   console.log(err);

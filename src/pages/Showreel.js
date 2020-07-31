@@ -13,7 +13,7 @@ function Showreel() {
     setLoading(true);
     axios
       .get('/showreel')
-      .then(async (res) => {
+      .then((res) => {
         setShowreels(res.data);
         console.log('showreels', showreels);
       })
@@ -38,6 +38,7 @@ function Showreel() {
               <div className='showreel-content'>
                 {showreels.map((item, index) => (
                   <ReactPlayer
+                    key={index}
                     url={item.showreelUrl}
                     controls={true}
                     width='100%'

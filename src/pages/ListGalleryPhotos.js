@@ -79,32 +79,30 @@ export default function ListGalleryPhotos(props) {
           columns={columns}
           data={mergedItems}
           editable={{
-            // onRowUpdate: (newData, oldData) =>
-            //   new Promise((resolve) => {
-            //     IsAuthenticated();
-            //     setTimeout(() => {
-            //       resolve();
-            //       if (oldData) {
-            //         setState((prevState) => {
-            //           const data = [...prevState.data];
-            //           data[data.indexOf(oldData)] = newData;
-            //           return { ...prevState, data };
-            //         });
-            //       }
-            //     }, 600);
-            //   }),
             onRowDelete: async (oldData) => {
               IsAuthenticated();
-              const contentId = oldData.contentId;
+              let fileName = oldData.imageUrl
+                .split('?alt=media')[0]
+                .split('%2F')[1];
+              oldData.type === 'Media'
+                ? (fileName = 'media/' + fileName)
+                : (fileName = 'mylife/' + fileName);
+
+              // console.log('desertRef', desertRef);
               console.log('oldData', oldData);
-              console.log('contentId', contentId);
-              await axios
-                .delete(`/content/${contentId}`)
-                .then((res) => {
-                  setMergedItems(res.data);
+              console.log('fileName', fileName);
+
+              await firebase
+                .storage()
+                .ref()
+                .child(fileName)
+                .delete()
+                .then(function () {
+                  getAllPhotos();
+                  console.log('Delete successful');
                 })
-                .catch((err) => {
-                  console.log(err);
+                .catch(function (error) {
+                  console.log('error', error);
                 });
             },
           }}

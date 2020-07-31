@@ -13,12 +13,6 @@ const {
   deleteBlog,
   updateBlogsImageUrl,
 } = require('./handlers/blog');
-const {
-  getImages,
-  postImage,
-  deleteImage,
-  updateImageUrls,
-} = require('./handlers/gallery');
 
 const {
   contactUs,
@@ -37,16 +31,11 @@ app.get('/blog/:blogId', getBlog);
 app.get('/blog', getBlogs);
 app.post('/blog', FBAuth, postBlog);
 app.delete('/blog/:blogId', FBAuth, deleteBlog);
-app.post('/blog/:imageId/:imageExtension', FBAuth, updateImageUrls);
+app.post('/blog/:imageId/:imageExtension', FBAuth, updateBlogsImageUrl);
 
 app.get('/showreel', getShowreels);
 app.post('/showreel', FBAuth, postShowreel);
 app.delete('/showreel/:showreelId', FBAuth, deleteShowreel);
-
-app.get('/image', getImages);
-app.post('/image', FBAuth, postImage);
-app.delete('/image/:imageId', FBAuth, deleteImage);
-app.post('/image/:imageId/:imageExtension', FBAuth, updateBlogsImageUrl);
 
 app.post('/contact', contactUs);
 app.get('/contact', FBAuth, getContactUsMessages);

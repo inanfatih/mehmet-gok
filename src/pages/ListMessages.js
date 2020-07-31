@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import firebase from '../firebase/firebase';
+import React, { useEffect, useState } from 'react';
 import loadingSipnner from '../util/loadingSpinner';
 import MaterialTable from 'material-table';
 import axios from 'axios';
@@ -13,59 +12,44 @@ export default function ListMessages(props) {
   }
 
   const columns = [
-    { title: 'Image Url', field: 'imageUrl' },
+    { title: 'Name', field: 'name' },
     {
-      title: 'Image Type',
-      field: 'type',
+      title: 'Email',
+      field: 'email',
+    },
+    {
+      title: 'Phone',
+      field: 'phone',
+    },
+
+    {
+      title: 'Message',
+      field: 'message',
+    },
+    {
+      title: 'Sent At',
+      field: 'createdAt',
     },
   ];
 
   const [loading, setLoading] = useState(true);
+  const [messages, setMessages] = useState([]);
 
-  const [mergedItems, setMergedItems] = useState([]);
-
-  // If you still need to store each itemsType in a separate lists you could do the following
-  const media = useMemo(
-    () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'Media'),
-    [mergedItems],
-  );
-  const myLife = useMemo(
-    () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'My Life'),
-    [mergedItems],
-  );
-
-  const getAllPhotos = async () => {
-    const storageRefMedia = firebase.storage().ref('media');
-    const storageRefMyLife = firebase.storage().ref('mylife');
-
-    const itemsMapFactory = (type) => async (imageRef) => {
-      const imageUrl = await imageRef.getDownloadURL();
-      return { imageUrl, type };
-    };
-    const [mediaItems, myLifeItems] = await Promise.all([
-      storageRefMedia.listAll(),
-      storageRefMyLife.listAll(),
-    ]).catch((error) => {
-      console.log('error', error);
-      setLoading(false);
-    });
-
-    await Promise.all([
-      ...mediaItems.items.map(itemsMapFactory('Media')),
-      ...myLifeItems.items.map(itemsMapFactory('My Life')),
-    ])
-      .then((hay) => {
-        setMergedItems(hay);
+  const getAllMessages = () => {
+    axios
+      .get('/contact')
+      .then((res) => {
+        setMessages(res.data);
+        console.log('messages', res.data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.log('error', error);
-        setLoading(false);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   useEffect(() => {
-    getAllPhotos();
+    getAllMessages();
     //eslint-disable-next-line
   }, []);
 
@@ -75,33 +59,19 @@ export default function ListMessages(props) {
     <div id='table'>
       <div className='container'>
         <MaterialTable
-          title='Gallery Photos'
+          title='Messages'
           columns={columns}
-          data={mergedItems}
+          data={messages}
           editable={{
-            // onRowUpdate: (newData, oldData) =>
-            //   new Promise((resolve) => {
-            //     IsAuthenticated();
-            //     setTimeout(() => {
-            //       resolve();
-            //       if (oldData) {
-            //         setState((prevState) => {
-            //           const data = [...prevState.data];
-            //           data[data.indexOf(oldData)] = newData;
-            //           return { ...prevState, data };
-            //         });
-            //       }
-            //     }, 600);
-            //   }),
             onRowDelete: async (oldData) => {
               IsAuthenticated();
-              const contentId = oldData.contentId;
+              let messageId = oldData.messageId;
               console.log('oldData', oldData);
-              console.log('contentId', contentId);
+
               await axios
-                .delete(`/content/${contentId}`)
+                .delete(`/contact/${messageId}`)
                 .then((res) => {
-                  setMergedItems(res.data);
+                  setMessages(res.data);
                 })
                 .catch((err) => {
                   console.log(err);

@@ -81,7 +81,7 @@ function CreateBlog(props) {
 
   const postContentLinks = async (blogId, imageExtension) => {
     try {
-      const res = await axios.post(`/image/${blogId}/${imageExtension}`);
+      const res = await axios.post(`/blog/${blogId}/${imageExtension}`);
       console.log('image link is updated', res);
       return res;
     } catch (err) {

@@ -38,7 +38,7 @@ function Admin(props) {
           <Link to='/create-blog'>
             <button className='btn'>Create a Blog</button>
           </Link>
-          <Link to='/list-blog'>
+          <Link to='/list-blogs'>
             <button className='btn'>List and Delete a Blog</button>
           </Link>
           <Link to='/list-messages'>

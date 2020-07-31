@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import firebase from '../firebase/firebase';
+import React, { useEffect, useState } from 'react';
 import loadingSipnner from '../util/loadingSpinner';
 import MaterialTable from 'material-table';
+import firebase from '../firebase/firebase';
+
 import axios from 'axios';
 //Files
 import '../App.css';
@@ -13,59 +14,52 @@ export default function ListBlogs(props) {
   }
 
   const columns = [
-    { title: 'Image Url', field: 'imageUrl' },
+    { title: 'Title', field: 'title' },
     {
-      title: 'Image Type',
-      field: 'type',
+      title: 'Description',
+      field: 'description',
+    },
+    {
+      title: 'Blog Text',
+      field: 'blogText',
+    },
+
+    {
+      title: 'Image',
+      field: 'image',
+    },
+    {
+      title: 'Location',
+      field: 'Location',
+    },
+    {
+      title: 'Created At',
+      field: 'createdAt',
+    },
+    {
+      title: 'Order No',
+      field: 'orderNo',
     },
   ];
 
   const [loading, setLoading] = useState(true);
+  const [blogs, setBlogs] = useState([]);
 
-  const [mergedItems, setMergedItems] = useState([]);
-
-  // If you still need to store each itemsType in a separate lists you could do the following
-  const media = useMemo(
-    () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'Media'),
-    [mergedItems],
-  );
-  const myLife = useMemo(
-    () => mergedItems.filter((myLifeItem) => myLifeItem.type === 'My Life'),
-    [mergedItems],
-  );
-
-  const getAllPhotos = async () => {
-    const storageRefMedia = firebase.storage().ref('media');
-    const storageRefMyLife = firebase.storage().ref('mylife');
-
-    const itemsMapFactory = (type) => async (imageRef) => {
-      const imageUrl = await imageRef.getDownloadURL();
-      return { imageUrl, type };
-    };
-    const [mediaItems, myLifeItems] = await Promise.all([
-      storageRefMedia.listAll(),
-      storageRefMyLife.listAll(),
-    ]).catch((error) => {
-      console.log('error', error);
-      setLoading(false);
-    });
-
-    await Promise.all([
-      ...mediaItems.items.map(itemsMapFactory('Media')),
-      ...myLifeItems.items.map(itemsMapFactory('My Life')),
-    ])
-      .then((hay) => {
-        setMergedItems(hay);
+  const getAllBlogs = () => {
+    axios
+      .get('/blog')
+      .then((res) => {
+        setBlogs(res.data);
+        console.log('blogs', res.data);
         setLoading(false);
       })
-      .catch((error) => {
-        console.log('error', error);
-        setLoading(false);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   useEffect(() => {
-    getAllPhotos();
+    getAllBlogs();
     //eslint-disable-next-line
   }, []);
 
@@ -73,43 +67,44 @@ export default function ListBlogs(props) {
     loadingSipnner
   ) : (
     <div id='table'>
-      <div className='container'>
-        <MaterialTable
-          title='Gallery Photos'
-          columns={columns}
-          data={mergedItems}
-          editable={{
-            // onRowUpdate: (newData, oldData) =>
-            //   new Promise((resolve) => {
-            //     IsAuthenticated();
-            //     setTimeout(() => {
-            //       resolve();
-            //       if (oldData) {
-            //         setState((prevState) => {
-            //           const data = [...prevState.data];
-            //           data[data.indexOf(oldData)] = newData;
-            //           return { ...prevState, data };
-            //         });
-            //       }
-            //     }, 600);
-            //   }),
-            onRowDelete: async (oldData) => {
-              IsAuthenticated();
-              const contentId = oldData.contentId;
-              console.log('oldData', oldData);
-              console.log('contentId', contentId);
-              await axios
-                .delete(`/content/${contentId}`)
-                .then((res) => {
-                  setMergedItems(res.data);
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            },
-          }}
-        />
-      </div>
+      <MaterialTable
+        title='Blogs'
+        columns={columns}
+        data={blogs}
+        editable={{
+          onRowDelete: async (oldData) => {
+            IsAuthenticated();
+            let blogId = oldData.blogId;
+            // console.log('oldData', oldData);
+
+            let fileName =
+              'blogimages/' +
+              oldData.image.split('?alt=media')[0].split('%2F')[1];
+            // console.log('fileName', fileName);
+            await axios
+              .delete(`/blog/${blogId}`)
+              .then((res) => {
+                setBlogs(res.data);
+              })
+              .then(async () => {
+                await firebase
+                  .storage()
+                  .ref()
+                  .child(fileName)
+                  .delete()
+                  .then(function () {
+                    console.log('Delete photo successful');
+                  })
+                  .catch(function (error) {
+                    console.log('error', error);
+                  });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+        }}
+      />
     </div>
   );
 }
