@@ -82,7 +82,7 @@ a:active {
       justify-content: center; }
       #header #main-nav ul li {
         margin: 0.5rem 0.3rem 0 0;
-        padding: 0.3rem 0.7rem 0;
+        padding: 0.3rem 0.8rem 0;
         font-size: 0.8rem;
         border-top: 1px #a0138e solid;
         text-transform: uppercase; }
@@ -99,10 +99,11 @@ a:active {
   margin-top: 110px; }
   #home .quote {
     position: absolute;
+    margin-right: 30px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.5);
-    width: 470px;
-    top: 31%;
+    max-width: 440px;
+    top: 30%;
     font-size: 2rem; }
 
 #galleries {
@@ -137,33 +138,36 @@ a:active {
   background-attachment: fixed;
   margin-top: 110px; }
   #about .about {
-    display: flex;
     min-height: 600px;
     background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
     padding-right: 30px;
     margin-bottom: 30px; }
-    #about .about .about-image {
-      background: url("../images/about.jpg") no-repeat center right/cover;
-      border: 8px solid #efefef;
-      margin: 30px;
-      flex: 1 1 0;
-      width: 0; }
-    #about .about .about-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1 1 0;
-      width: 0; }
-      #about .about .about-text .about-title {
-        display: block;
-        font-size: 2rem;
-        border-bottom: 2px solid black; }
-      #about .about .about-text .about-content {
-        font-weight: 400; }
-      #about .about .about-text .mg-text {
+    #about .about .about-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px; }
+    #about .about .about-content {
+      display: flex; }
+      #about .about .about-content .about-image {
+        background: url("../images/about.jpg") no-repeat center right/cover;
+        border: 8px solid #efefef;
         margin-right: 30px;
-        font-size: 5rem;
-        text-align: right; }
+        flex: 1 1 0;
+        width: 0; }
+      #about .about .about-content .about-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1 1 0;
+        width: 0; }
+        #about .about .about-content .about-text .about-content {
+          font-weight: 400; }
+        #about .about .about-content .about-text .mg-text {
+          margin-right: 30px;
+          font-size: 5rem;
+          text-align: right; }
 
 #contact {
   background: url("../images/background-image.jpg") no-repeat center right/cover;
@@ -462,3 +466,65 @@ a:active {
       height: 500px; }
     #blog-page .blog-page .blog-page-text {
       margin: 15px 0; }
+
+@media (max-width: 500px) {
+  #header #main-nav ul li {
+    padding: 0.3rem 0.4rem 0; }
+  #galleries .container {
+    flex-direction: column;
+    margin: 0 30px; }
+    #galleries .container .galleries-mylife {
+      line-height: 200px;
+      height: 200px; }
+    #galleries .container .galleries-media {
+      height: 200px;
+      line-height: 200px; }
+  #about .about .about-content {
+    display: block; }
+    #about .about .about-content .about-image {
+      width: 100%;
+      height: 400px;
+      margin-bottom: 30px; }
+    #about .about .about-content .about-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%; }
+  #contact {
+    background: url("../images/background-image.jpg") no-repeat center right/cover;
+    min-height: calc(100vh - 113px);
+    background-attachment: fixed;
+    margin-top: 110px; }
+    #contact .contact {
+      min-height: 500px;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      margin-bottom: 30px; }
+      #contact .contact .contact-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1rem; }
+  #blog {
+    background: url("../images/background-image.jpg") no-repeat center right/cover;
+    min-height: calc(100vh - 113px);
+    background-attachment: fixed;
+    margin-top: 110px; }
+    #blog .blog {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      margin-bottom: 30px; }
+      #blog .blog .blog-page-title {
+        display: block;
+        font-size: 2rem;
+        border-bottom: 2px solid black;
+        margin-bottom: 20px; }
+      #blog .blog .blog-content {
+        grid-template-columns: 1fr; }
+  #showreel .showreel .showreel-content {
+    grid-template-columns: 1fr; }
+  #login .login {
+    padding: 30px 30px;
+    margin-bottom: 30px; }
+  #admin .admin {
+    padding: 30px 30px;
+    margin-bottom: 30px; } }

@@ -75,7 +75,7 @@ a:active {
 
       li {
         margin: 0.5rem 0.3rem 0 0;
-        padding: 0.3rem 0.7rem 0;
+        padding: 0.3rem 0.8rem 0;
         font-size: 0.8rem;
         border-top: 1px $border-color solid;
         text-transform: uppercase;
@@ -101,10 +101,11 @@ a:active {
 
   .quote {
     position: absolute;
+    margin-right: 30px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.5);
-    width: 470px;
-    top: 31%;
+    max-width: 440px;
+    top: 30%;
     font-size: 2rem;
   }
 }
@@ -149,36 +150,42 @@ a:active {
   margin-top: 110px;
 
   .about {
-    display: flex;
     min-height: 600px;
     background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+
     padding-right: 30px;
     margin-bottom: 30px;
-    .about-image {
-      background: $about-image no-repeat center right/cover;
-      border: 8px solid #efefef;
-      margin: 30px;
-      flex: 1 1 0;
-      width: 0;
+    .about-title {
+      display: block;
+      font-size: 2rem;
+      border-bottom: 2px solid black;
+      margin-bottom: 20px;
     }
-    .about-text {
+    .about-content {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1 1 0;
-      width: 0;
-      .about-title {
-        display: block;
-        font-size: 2rem;
-        border-bottom: 2px solid black;
-      }
-      .about-content {
-        font-weight: 400;
-      }
-      .mg-text {
+      .about-image {
+        background: $about-image no-repeat center right/cover;
+        border: 8px solid #efefef;
         margin-right: 30px;
-        font-size: 5rem;
-        text-align: right;
+        flex: 1 1 0;
+        width: 0;
+      }
+      .about-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1 1 0;
+        width: 0;
+
+        .about-content {
+          font-weight: 400;
+        }
+        .mg-text {
+          margin-right: 30px;
+          font-size: 5rem;
+          text-align: right;
+        }
       }
     }
   }
@@ -585,3 +592,5 @@ a:active {
     }
   }
 }
+
+@import 'media';
