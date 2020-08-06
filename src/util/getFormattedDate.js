@@ -6,6 +6,7 @@ const getFormattedDate = () => {
   var hour = date.getHours();
   var min = date.getMinutes();
   var sec = date.getSeconds();
+  var millisec = date.getMilliseconds();
 
   month = (month < 10 ? '0' : '') + month;
   day = (day < 10 ? '0' : '') + day;
@@ -13,7 +14,7 @@ const getFormattedDate = () => {
   min = (min < 10 ? '0' : '') + min;
   sec = (sec < 10 ? '0' : '') + sec;
 
-  var str = date.getFullYear() + month + day + hour + min + sec;
+  var str = date.getFullYear() + month + day + hour + min + sec + millisec;
 
   return str;
 };

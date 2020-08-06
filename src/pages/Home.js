@@ -11,11 +11,16 @@ function Home() {
     <div id='home'>
       <div className='container'>
         <p className='quote'>
-          Dünyayı değiştirecek olan şey filmler değil, o filmleri izleyen
-          insanlardır.
+          There is no end. <br /> There is no beginning. <br /> There is only
+          the infinite passion of life.
           <br />
           <br />
-          Krzysztof Kieslowski
+          <span
+            style={{
+              color: '#756464',
+            }}>
+            Federico Fellini
+          </span>
         </p>
       </div>
     </div>

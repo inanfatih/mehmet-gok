@@ -21,7 +21,10 @@ export default function ListMessages(props) {
       title: 'Phone',
       field: 'phone',
     },
-
+    {
+      title: 'Subject',
+      field: 'subject',
+    },
     {
       title: 'Message',
       field: 'message',

@@ -42,7 +42,7 @@ function Showreel() {
                     url={item.showreelUrl}
                     controls={true}
                     width='100%'
-                    height='300px'
+                    height='250px'
                     className='react-player'
                   />
                 ))}

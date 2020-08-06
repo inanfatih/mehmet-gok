@@ -29,6 +29,7 @@ exports.contactUs = (req, res) => {
     name: req.body.name,
     email: req.body.email,
     phone: req.body.phone,
+    subject: req.body.subject,
     message: req.body.message,
     createdAt: new Date().toISOString(),
   };
@@ -57,6 +58,7 @@ exports.getContactUsMessages = (req, res) => {
           messageId: doc.id,
           email: doc.data().email,
           message: doc.data().message,
+          subject: doc.data().subject,
           name: doc.data().name,
           phone: doc.data().phone,
           createdAt: doc.data().createdAt,
